@@ -47,7 +47,7 @@
 - Limit IP & Quota Account
 - web detail
 ---
-![qris](https://github.com/MakhlukTunnel/Autoscipt dan/raw/main/QRIS.png)
+![qris](https://github.com/MakhlukTunnel/Autoscipt/raw/main/QRIS.png)
 - Dana
   - 083856249570
 
