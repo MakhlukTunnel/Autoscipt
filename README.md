@@ -1,9 +1,5 @@
-Autoscript MakhlukTunnel
-Masih dalam pengembangan.
-
-
 ### MakhlukTunnel『 𝐌𝐓 』
- Autoscript ini dapat digunakan oleh Debian 9/10 Dan Ubuntu 18/20 (LTS)
+ Autoscript ini dapat digunakan oleh semua versi Debian Dan Ubuntu (LTS)
 
 ### Contact admin [Mehonk](https://t.me/mehonk_cs)
 ### Grup Telegram [MakhlukTunnel](https://t.me/makhluktunnel)
@@ -22,7 +18,7 @@ Masih dalam pengembangan.
 | OpenVPN TCP             |  443, 1194      |
 | OpenVPN UDP             |  2200           |
 | SlowDNS Server          |  443, 53        |
-| NoobzVPN Server         |  8880, 8443     |
+| NoobzVPN Server         |  8880, 443      |
 | XRAY Vmess TLS          |  443            |
 | XRAY Vmess gRPC         |  443            |
 | XRAY Vmess NTLS         |  80             |
@@ -49,12 +45,12 @@ Masih dalam pengembangan.
 - Bot Telegram 
 - Backup & Restore Data
 - Limit IP & Quota Account
-- Format OpenClash
+- web detail
 ---
 ![qris](https://github.com/Annnjayy/Multi/raw/main/qris.png)
 - Dana
   - 083856249570
 
 # 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=Annnjayy&theme=white&hide_border=false&include_all_commits=false&count_private=false)<br/>
-![](https://github-readme-streak-stats.herokuapp.com/?user=Annnjayy&theme=white&hide_border=false)<br/>
+![](https://github-readme-stats.vercel.app/api?username=MakhlukTunnel&theme=white&hide_border=false&include_all_commits=false&count_private=false)<br/>
+![](https://github-readme-streak-stats.herokuapp.com/?user=MakhlukTunnel&theme=white&hide_border=false)<br/>
