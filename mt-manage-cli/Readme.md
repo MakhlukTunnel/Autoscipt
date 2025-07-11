@@ -28,13 +28,13 @@
 
 | Options | Informasi | For_Command | default_value |
 |--|--|--|--|
-| `--types` | Tipe link untuk akun Xray (`all`/`ws`/`grpc`) | Untuk Xray (`vmess`, `vless`, `trojan`, `shadowsocks`) | all |
+| `--types` | Tipe link untuk akun Xray (`all`/`ws`/`grpc`) | untuk Xray (`vmess`, `vless`, `trojan`, `shadowsocks`) | all |
 | `--user` | Username untuk semua layanan | Untuk Xray (`vmess`, `vless`, `trojan`, `shadowsocks`) | |
-| `--pass` | Password untuk akun | Untuk `ssh` & `noobzvpn` | |
-| `--uuid` | UUID [v4] untuk akun | Untuk Xray (`vmess`, `vless`, `trojan`, `shadowsocks`) | random |
-| `-e` | Tanggal kadaluarsa | Untuk semua layanan | 360 |
-| `-d` | Batas perangkat | Untuk semua layanan | 999 |
-| `-b` | Batas bandwidth | Untuk `noobzvpn` & Xray (`vmess`, `vless`, `trojan`, `shadowsocks`) | 9999 |
+| `--pass` | Password untuk akun | untuk `ssh` & `noobzvpn` | |
+| `--uuid` | UUID [v4] untuk akun | untuk Xray (`vmess`, `vless`, `trojan`, `shadowsocks`) | random |
+| `-e` | Tanggal kadaluarsa | untuk semua layanan | 360 |
+| `-d` | Batas perangkat | untuk semua layanan | 0 |
+| `-b` | Batas bandwidth | untuk semua layanan | 0 |
 
 ### Menampilkan Bantuan
 Menampilkan bantuan umum untuk CLI:
@@ -81,8 +81,8 @@ detail [opts] [..] : Mendapatkan detail akun yang sudah ada.
 --pass <PASSWORD> : Menentukan password akun.
 --uuid <UUID V4> : Menentukan UUID akun, default: random.
 -e, <DAYS> : Menentukan masa kadaluarsa akun, default: 360 hari.
--d, <UNITS> : Menentukan batas perangkat maksimal, default: 999 (unlimited).
--b, <GIGA_BYTES> : Menentukan batas bandwidth, default: 9999 (unlimited).
+-d, <UNITS> : Menentukan batas perangkat maksimal, default: 0 (unlimited).
+-b, <GIGA_BYTES> : Menentukan batas bandwidth, default: 0 (unlimited).
 ```
 
 ---
@@ -92,13 +92,13 @@ detail [opts] [..] : Mendapatkan detail akun yang sudah ada.
 #### SSH
 - Menambah akun SSH:
   ```bash
-  ./mt-manage-cli ssh add --user <username> --pass <password> -e <expiration_date> -d <device_limit>
+  ./mt-manage-cli ssh add --user <username> --pass <password> -e <expiration_date> -d <device_limit> -b <bandwidth_limit>
   ```
 - Mengedit akun SSH
 
   semua opsi :
   ```bash
-  ./mt-manage-cli ssh edit --user <username> --pass <password> -e <expiration_date> -d <device_limit>
+  ./mt-manage-cli ssh edit --user <username> --pass <password> -e <expiration_date> -d <device_limit> -b <bandwidth_limit>
   ```
   
   hanya opsi tertentu :
@@ -200,12 +200,20 @@ Berikut ini adalah contoh penggunaan dan bagaimana cara memanggil endpoint untuk
 ```json
 {
     "apikey": "<api_key>"
-    "token": "<bot_token>"
     "port": 2052,
+    "token": "<bot_token>",
     "admin": [
       "<id_tele>",
       "xxx"
-    ]
+    ],
+    "ip": "xxx-ip",
+    "isp": "xxx-isp",
+    "city": "xxx-city",
+    "manage": {
+        "ip_action": "lock",
+        "quota_action": "remove",
+        "interval": 300
+    }
 }
 ```
 
@@ -238,7 +246,7 @@ Berikut adalah rangkuman langkah-langkah yang perlu dilakukan:
 
    - **Menambahkan Akun SSH:**
      ```bash
-     curl -X POST http://localhost:2052/ssh/add -H "Content-Type: application/json" -H "Authorization: Bearer <api_key>" -d '{ "user": "username", "pass": "password", "exp": "360", "device": "999" }'
+     curl -X POST http://localhost:2052/ssh/add -H "Content-Type: application/json" -H "Authorization: Bearer <api_key>" -d '{ "user": "username", "pass": "password", "exp": "360", "device": "999", "bandwidth": "9999" }'
      ```
 
    - **Menambahkan Akun Noobzvpn:**
@@ -265,6 +273,7 @@ Berikut adalah rangkuman langkah-langkah yang perlu dilakukan:
              "user": "username",
              "pass": "password",
              "iplim": "999",
+             "quota": "9999",
              "status": "unlock",
              "exp_date": "360"
          },
